@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> </title>
+<style>
+  body { margin:0; font-family: sans-serif; background:#111; color:#fff; }
+  .overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999;
+  }
+  .ad-frame {
+    width: 90%;
+    height: 90%;
+    border: none;
+    border-radius: 12px;
+    background: #000;
+  }
+  .hidden { display: none; }
+  .timer {
+    position: absolute; top: 10px; right: 20px;
+    background: rgba(0,0,0,0.6);
+    padding: 6px 12px; border-radius: 8px;
+    font-weight: bold; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+
+<div id="overlay1" class="overlay">
+  <div class="timer" id="timer1">20</div>
+  <iframe class="ad-frame" src="https://www.profitableratecpm.com/wwsyz269v?key=e3ffdb405d25a08f669d9e679558a2cf"></iframe>
+</div>
+
+<div id="overlay2" class="overlay hidden">
+  <div class="timer" id="timer2">20</div>
+  <iframe class="ad-frame" src="https://www.profitableratecpm.com/wwsyz269v?key=e3ffdb405d25a08f669d9e679558a2cf"></iframe>
+</div>
+
+<script>
+let showFirst = true;
+let timeLeft = 20;
+let timerEl = document.getElementById('timer1');
+let overlay1 = document.getElementById('overlay1');
+let overlay2 = document.getElementById('overlay2');
+
+function switchOverlay() {
+  showFirst = !showFirst;
+  timeLeft = 20;
+  if (showFirst) {
+    overlay1.classList.remove('hidden');
+    overlay2.classList.add('hidden');
+    timerEl = document.getElementById('timer1');
+  } else {
+    overlay1.classList.add('hidden');
+    overlay2.classList.remove('hidden');
+    timerEl = document.getElementById('timer2');
+  }
+}
+
+setInterval(() => {
+  timeLeft--;
+  timerEl.textContent = timeLeft;
+  if (timeLeft <= 0) {
+    switchOverlay();
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
